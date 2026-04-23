@@ -1,0 +1,30 @@
+frontend-tasks-app:
+  name: frontend-tasks-app
+  namespace: tasks-app
+  serviceAccountName: frontend-tasks-sa
+  image:
+    repository: registry.local:5443/frontend-react-tasks/frontend-react-tasks
+    tag: latest
+  secretName: frontend-tasks-secret
+  serviceName: frontend-tasks-svc
+
+backend-tasks-app:
+  name: backend-tasks-app
+  namespace: tasks-app
+  serviceAccountName: backend-tasks-sa
+  image:
+    repository: registry.local:5443/backend-django-tasks/backend-django-tasks
+    tag: latest
+  secretName: backend-tasks-secret
+  serviceName: backend-tasks-svc
+
+tasks-db:
+  name: tasks-db
+  namespace: tasks-app
+  serviceAccountName: tasks-db-sa
+  image:
+    repository: registry.local:5443/oficial-images/postgres
+    tag: alpine
+  secretName: postgres-db-secret
+  volumeName: tasks-db-storage
+  serviceName: tasks-db-svc

@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{.Values.tasks-db.name}}
+  namespace: {{.Values.tasks-db.namespace}}
+spec:
+  selector:
+    matchLabels:
+      app: {{.Values.tasks-db.name}}
+  serviceName: {{.Values.tasks-db.serviceName}}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{.Values.tasks-db.name}}
+    spec:
+      securityContext:
+        fsGroup: 70
+      serviceAccountName: {{.Values.tasks-db.serviceAccountName}}
+      containers:
+        - name: {{.Values.tasks-db.name}}
+          image: "{{.Values.backend-tasks-app.repository}}:{{.Values.backend-tasks-app.tag}}"
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{.Values.tasks-db.secretName}}
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{.Values.tasks-db.secretName}}
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{.Values.tasks-db.secretName}}
+                  key: POSTGRES_PASSWORD
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: {{.Values.tasks-db.volumeName}}
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: {{.Values.tasks-db.volumeName}}
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 2Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.tasks-db.serviceName}}
+  namespace: {{.Values.tasks-db.name}}
+spec:
+  clusterIP: None
+  selector:
+    app: {{.Values.tasks-db.name}}
+  ports:
+    - port: 5432
+      targetPort: 5432
