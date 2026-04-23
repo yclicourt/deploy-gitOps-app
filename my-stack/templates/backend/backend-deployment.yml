@@ -1,55 +1,55 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.backend-tasks-app.name}}
-  namespace: {{.Values.backend-tasks-app.namespace}}
+  name: {{.Values.backend_tasks_app.name}}
+  namespace: {{.Values.backend_tasks_app.namespace}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{.Values.backend-tasks-app.name}}
+      app: {{.Values.backend_tasks_app.name}}
   template:
     metadata:
       labels:
-        app: {{.Values.backend-tasks-app.name}}
+        app: {{.Values.backend_tasks_app.name}}
     spec:
-      serviceAccountName: {{.Values.backend-tasks-app.serviceAccountName}}
+      serviceAccountName: {{.Values.backend_tasks_app.serviceAccountName}}
       securityContext:
         fsGroup: 1000
       containers:
-        - name: {{.Values.backend-tasks-app.name}}
-          image: "{{.Values.backend-tasks-app.repository}}:{{.Values.backend-tasks-app.tag}}"
+        - name: {{.Values.backend_tasks_app.name}}
+          image: "{{.Values.backend_tasks_app.repository}}:{{.Values.backend_tasks_app.tag}}"
           imagePullPolicy: Always
           env:
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: {{.Values.backend-tasks-app.secretName}}
+                  name: {{.Values.backend_tasks_app.secretName}}
                   key: DB_NAME
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{.Values.backend-tasks-app.secretName}}
+                  name: {{.Values.backend_tasks_app.secretName}}
                   key: DB_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{.Values.backend-tasks-app.secretName}}
+                  name: {{.Values.backend_tasks_app.secretName}}
                   key: DB_PASSWORD
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: {{.Values.backend-tasks-app.secretName}}
+                  name: {{.Values.backend_tasks_app.secretName}}
                   key: DB_HOST
             - name: DB_PORT
               valueFrom:
                 secretKeyRef:
-                  name: {{.Values.backend-tasks-app.secretName}}
+                  name: {{.Values.backend_tasks_app.secretName}}
                   key: DB_PORT
             - name: CORS_ALLOWED_ORIGINS
               valueFrom:
                 secretKeyRef:
-                  name: {{.Values.backend-tasks-app.secretName}}
+                  name: {{.Values.backend_tasks_app.secretName}}
                   key: CORS_ALLOWED_ORIGINS
           resources:
             requests:
@@ -64,12 +64,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{.Values.backend-tasks-app.serviceName}}
-  namespace: {{.Values.backend-tasks-app.namespace}}
+  name: {{.Values.backend_tasks_app.serviceName}}
+  namespace: {{.Values.backend_tasks_app.namespace}}
 spec:
   type: ClusterIP
   selector:
-    app: {{.Values.backend-tasks-app.name}}
+    app: {{.Values.backend_tasks_app.name}}
   ports:
     - port: 8000
       targetPort: 8000

@@ -1,4 +1,4 @@
-frontend-tasks-app:
+frontend_tasks_app:
   name: frontend-tasks-app
   namespace: tasks-app
   serviceAccountName: frontend-tasks-sa
@@ -8,7 +8,7 @@ frontend-tasks-app:
   secretName: frontend-tasks-secret
   serviceName: frontend-tasks-svc
 
-backend-tasks-app:
+backend_tasks_app:
   name: backend-tasks-app
   namespace: tasks-app
   serviceAccountName: backend-tasks-sa
@@ -18,7 +18,7 @@ backend-tasks-app:
   secretName: backend-tasks-secret
   serviceName: backend-tasks-svc
 
-tasks-db:
+tasks_db:
   name: tasks-db
   namespace: tasks-app
   serviceAccountName: tasks-db-sa
