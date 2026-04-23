@@ -18,7 +18,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: {{.Values.backend_tasks_app.name}}
-          image: "{{.Values.backend_tasks_app.repository}}:{{.Values.backend_tasks_app.tag}}"
+          image: "{{ .Values.backend_tasks_app.image.repository}}:{{.Values.backend_tasks_app.image.tag}}"
           imagePullPolicy: Always
           env:
             - name: DB_NAME

@@ -47,7 +47,7 @@ spec:
       serviceAccountName: {{.Values.frontend_tasks_app.serviceAccountName}}
       containers:
         - name: {{.Values.frontend_tasks_app.name}}
-          image: "{{.Values.frontend_tasks_app.repository}}:{{.Values.frontend_tasks_app.tag}}"
+          image: "{{.Values.frontend_tasks_app.image.repository}}:{{.Values.frontend_tasks_app.image.tag}}"
           imagePullPolicy: Always
           env:
             - name: VITE_BASE_URL
