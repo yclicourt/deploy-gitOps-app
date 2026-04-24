@@ -14,8 +14,6 @@ spec:
         app: {{.Values.backend_tasks_app.name}}
     spec:
       serviceAccountName: {{.Values.backend_tasks_app.serviceAccountName}}
-      securityContext:
-        fsGroup: 1000
       containers:
         - name: {{.Values.backend_tasks_app.name}}
           image: "{{ .Values.backend_tasks_app.image.repository}}:{{.Values.backend_tasks_app.image.tag}}"
@@ -51,6 +49,11 @@ spec:
                 secretKeyRef:
                   name: {{.Values.backend_tasks_app.secretName}}
                   key: CORS_ALLOWED_ORIGINS
+            - name: ALLOWED_HOSTS
+              valueFrom:
+                secretKeyRef:
+                  name: {{.Values.backend_tasks_app.secretName}}
+                  key: ALLOWED_HOSTS
           resources:
             requests:
               memory: "64Mi"
@@ -71,5 +74,5 @@ spec:
   selector:
     app: {{.Values.backend_tasks_app.name}}
   ports:
-    - port: 80
+    - port: 8000
       targetPort: 8000
