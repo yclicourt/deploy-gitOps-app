@@ -1,3 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-app-ingress
+  namespace: {{.Values.backend_tasks_app.namespace}}
+  labels:
+    app.kubernetes.io/name: backend-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.priority: "10"
+spec:
+  rules:
+    - host: api-tasks.local
+      http:
+        paths:
+          - path: /api/v1/
+            pathType: Prefix
+            backend:
+              service:
+                name: {{.Values.backend_tasks_app.serviceName}}
+                port:
+                  number: 80
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
