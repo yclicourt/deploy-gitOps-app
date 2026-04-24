@@ -7,13 +7,13 @@ metadata:
     app.kubernetes.io/name: frontend-app-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.priority: "100"
+    traefik.ingress.kubernetes.io/router.priority: "1000"
 spec:
   rules:
     - host: tasks-app.local
       http:
         paths:
-          - path: /api/v1
+          - path: /api/v1/
             pathType: Prefix
             backend:
               service:
