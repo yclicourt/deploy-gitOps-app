@@ -14,6 +14,13 @@ spec:
         app: {{.Values.backend_tasks_app.name}}
     spec:
       serviceAccountName: {{.Values.backend_tasks_app.serviceAccountName}}
+      initContainers:
+        - name: run-migrations
+          image: "{{ .Values.backend_tasks_app.image.repository}}:{{.Values.backend_tasks_app.image.tag}}"
+          command: ['python', 'manage.py', 'migrate', '--noinput']
+          envFrom:
+            - secretRef:
+                name: {{.Values.backend_tasks_app.secretName}}
       containers:
         - name: {{.Values.backend_tasks_app.name}}
           image: "{{ .Values.backend_tasks_app.image.repository}}:{{.Values.backend_tasks_app.image.tag}}"
