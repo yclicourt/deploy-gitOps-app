@@ -8,7 +8,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.priority: "10"
-    traefik.ingress.kubernetes.io/router.middlewares: default-headers@kubernetescrd
 spec:
   rules:
     - host: tasks-app.local
