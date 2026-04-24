@@ -71,5 +71,5 @@ spec:
   selector:
     app: {{.Values.backend_tasks_app.name}}
   ports:
-    - port: 8000
+    - port: 80
       targetPort: 8000
