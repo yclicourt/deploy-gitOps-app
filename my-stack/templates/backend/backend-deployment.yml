@@ -7,6 +7,9 @@ metadata:
     app.kubernetes.io/name: backend-app-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    # Ayuda con problemas de timeout y buffers
+    traefik.ingress.kubernetes.io/service.serversscheme: http
     traefik.ingress.kubernetes.io/router.priority: "10"
 spec:
   rules:
