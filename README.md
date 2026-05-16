@@ -58,11 +58,19 @@ Si tu Harbor o el registro que decidas usar requiere credenciales para descargar
 1. Crear el secreto en tu clúster dentro del namespace tasks-app:
 
 ```
-    kubectl create secret docker-registry mi-registry-secret \
-    --docker-server=[https://tu-registry.com](https://tu-registry.com) \
-    --docker-username=tu_usuario \
-    --docker-password=tu_contraseña \
-    --namespace=tasks-app
+kubectl create secret docker-registry mi-registry-secret \
+--docker-server=[https://tu-registry.com](https://tu-registry.com) \
+--docker-username=tu_usuario \
+--docker-password=tu_contraseña \
+--namespace=tasks-app
 
 ```
 2. Vincular el secreto en tus manifiestos de Kubernetes (asegúrate de que tus plantillas en templates/ lean el secretName o añade la propiedad imagePullSecrets según tengas estructurado tu despliegue).
+
+## Diagrama de infraestructura de aplicación
+
+En este diagrama se muestra como se usa la conexion entre las diferentes herramientas en la app, el uso de los difefentes componentes de kubernetes, para un mejor manejo del cluster y el uso del paradigma de GitOps para un mejor experiencia de DevOps 
+
+```
+![alt text](diagrams-proy-tasks-app.png)
+```
