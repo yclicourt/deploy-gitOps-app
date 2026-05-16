@@ -67,10 +67,10 @@ kubectl create secret docker-registry mi-registry-secret \
 ```
 2. Vincular el secreto en tus manifiestos de Kubernetes (asegúrate de que tus plantillas en templates/ lean el secretName o añade la propiedad imagePullSecrets según tengas estructurado tu despliegue).
 
-## Diagrama de infraestructura de aplicación
+## 🗺️ Diagrama de infraestructura de aplicación
 
 En este diagrama se muestra como se usa la conexion entre las diferentes herramientas en la app, el uso de los difefentes componentes de kubernetes, para un mejor manejo del cluster y el uso del paradigma de GitOps para un mejor experiencia de DevOps 
 
-```
-![alt text](diagrams-proy-tasks-app.png)
-```
+
+![Diagrama de Arquitectura Gitops](./assets/arquitectura-gitops.png)
+
