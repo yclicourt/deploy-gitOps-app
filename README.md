@@ -71,6 +71,5 @@ kubectl create secret docker-registry mi-registry-secret \
 
 En este diagrama se muestra como se usa la conexion entre las diferentes herramientas en la app, el uso de los difefentes componentes de kubernetes, para un mejor manejo del cluster y el uso del paradigma de GitOps para un mejor experiencia de DevOps 
 
-
-![Diagrama de Arquitectura Gitops](./assets/arquitectura-gitops.png)
+![Diagrama de Arquitectura Gitops](./my-stack/assets/diagrams-proy-tasks-app.png)
 
