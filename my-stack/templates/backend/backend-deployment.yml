@@ -51,42 +51,9 @@ spec:
         - name: {{.Values.backend_tasks_app.name}}
           image: "{{ .Values.backend_tasks_app.image.repository}}:{{.Values.backend_tasks_app.image.tag}}"
           imagePullPolicy: Always
-          env:
-            - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.backend_tasks_app.secretName}}
-                  key: DB_NAME
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.backend_tasks_app.secretName}}
-                  key: DB_USER
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.backend_tasks_app.secretName}}
-                  key: DB_PASSWORD
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.backend_tasks_app.secretName}}
-                  key: DB_HOST
-            - name: DB_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.backend_tasks_app.secretName}}
-                  key: DB_PORT
-            - name: CORS_ALLOWED_ORIGINS
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.backend_tasks_app.secretName}}
-                  key: CORS_ALLOWED_ORIGINS
-            - name: ALLOWED_HOSTS
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.backend_tasks_app.secretName}}
-                  key: ALLOWED_HOSTS
+          envFrom:
+            - secretRef:
+              name: {{.Values.backend_tasks_app.secretName}}
           resources:
             requests:
               memory: "256Mi"
