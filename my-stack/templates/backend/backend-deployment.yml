@@ -22,7 +22,7 @@ spec:
               service:
                 name: {{.Values.backend_tasks_app.serviceName}}
                 port:
-                  number: 8000
+                  number: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -107,5 +107,5 @@ spec:
   selector:
     app: {{.Values.backend_tasks_app.name}}
   ports:
-    - port: 8000
+    - port: 80
       targetPort: 8000
