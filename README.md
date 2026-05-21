@@ -5,9 +5,9 @@ Este repositorio contiene los manifiestos de Kubernetes y la configuración de G
 ## 🗺️ Arquitectura del Proyecto
 
 El proyecto está dividido en tres componentes principales:
-* 🖥️ **[Frontend (React)](git@github.com:yclicourt/frontend-tasks-app.git)**: Cliente web para interactuar con las tareas.
-* ⚙️ **[Backend (Django DRF)](git@github.com:yclicourt/backend-tasks-app.git)**: API REST que maneja la lógica de negocio y persistencia.
-* ☸️ **[GitOps (ArgoCD)](git@github.com:yclicourt/deploy-gitOps-app.git)**: Estructura en formato Helm Chart que orquesta el despliegue de todos los servicios mediante ArgoCD.
+* 🖥️ **[Frontend (React)](https://github.com/yclicourt/frontend-tasks-app.git)**: Cliente web para interactuar con las tareas.
+* ⚙️ **[Backend (Django DRF)](https://github.com/yclicourt/backend-tasks-app.git)**: API REST que maneja la lógica de negocio y persistencia.
+* ☸️ **[GitOps (ArgoCD)](https://github.com/yclicourt/deploy-gitOps-app.git)**: Estructura en formato Helm Chart que orquesta el despliegue de todos los servicios mediante ArgoCD.
 
 
 ## 📁 Estructura del Repositorio
@@ -72,4 +72,5 @@ kubectl create secret docker-registry mi-registry-secret \
 En este diagrama se muestra como se usa la conexion entre las diferentes herramientas en la app, el uso de los diferentes componentes de kubernetes, para un mejor manejo del cluster y el uso del paradigma de GitOps para un mejor experiencia de DevOps 
 
 ![Diagrama de Arquitectura Gitops](./my-stack/assets/diagrams-proy-tasks-app.png)
-
+![Despliegue de Arquitectura GitOps en ArgoCD](./my-stack/assets/argcd.png)
+![Uso de Registry Privado con Harbor](./my-stack/assets/harbor-registry.png)
