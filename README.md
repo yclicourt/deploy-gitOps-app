@@ -72,5 +72,12 @@ kubectl create secret docker-registry mi-registry-secret \
 En este diagrama se muestra como se usa la conexion entre las diferentes herramientas en la app, el uso de los diferentes componentes de kubernetes, para un mejor manejo del cluster y el uso del paradigma de GitOps para un mejor experiencia de DevOps 
 
 ![Diagrama de Arquitectura Gitops](./my-stack/assets/diagrams-proy-tasks-app.png)
+
+- Uso de practicas de GitOps con ArgoCD
 ![Despliegue de Arquitectura GitOps en ArgoCD](./my-stack/assets/argcd.png)
+
+- Usando Registry Local con Harbor
 ![Uso de Registry Privado con Harbor](./my-stack/assets/harbor-registry.png)
+
+- App desplegada usando k3s como cluster de k8s
+![App Desplegada en el Cluster(K3S)](./my-stack/assets/k3s.png)
