@@ -1,4 +1,4 @@
-# 🚀 TodoApp - GitOps Infrastructure
+# 🚀 TaskApp - GitOps Infrastructure
 
 Este repositorio contiene los manifiestos de Kubernetes y la configuración de GitOps utilizando **ArgoCD** para el despliegue automatizado de la aplicación de tareas (TodoApp).
 
